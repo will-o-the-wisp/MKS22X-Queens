@@ -1,21 +1,22 @@
 public class QueenBoard{
   private int[][]board;
   public static void main(String[] args){
-
+    QueenBoard b = new QueenBoard(4);
+    System.out.println(b.toStringDebug());
   }
   public QueenBoard(int size){
     board=new int[size][size];
     for(int i=0;i<size;i++){
       for(int j=0;j<size;j++){
-        board[i][j]==0;
+        board[i][j]=0;
       }
     }
   }
   private boolean addQueen(int r, int c){
-
+    return false;
   }
   private boolean removeQueen(int r, int c){
-
+    return false;
   }
   /**
   *@return The output string formatted as follows:
@@ -30,7 +31,7 @@ public class QueenBoard{
   *excludes the character up to the *)
   */
   public String toString(){
-
+    return "";
   }
   private String toStringDebug(){
     String ans="";
@@ -48,7 +49,7 @@ public class QueenBoard{
   *@throws IllegalStateException when the board starts with any non-zero value
   */
   public boolean solve(){
-
+    return false;
   }
 
   /**
@@ -56,6 +57,6 @@ public class QueenBoard{
   *@throws IllegalStateException when the board starts with any non-zero value
   */
   public int countSolutions(){
-
+    return 0;
   }
 }
