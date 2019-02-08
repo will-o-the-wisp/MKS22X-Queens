@@ -7,14 +7,10 @@ public class QueenBoard{
     b.removeQueen(0,0);
     b.removeQueen(1,1);
     System.out.println(b.toStringDebug());
+    System.out.println(b.toString());
   }
   public QueenBoard(int size){
     board=new int[size][size];
-    for(int i=0;i<size;i++){
-      for(int j=0;j<size;j++){
-        board[i][j]=0;
-      }
-    }
   }
   private boolean addQueen(int r, int c){
     if(board[r][c]==0){
@@ -79,7 +75,20 @@ public class QueenBoard{
   *excludes the character up to the *)
   */
   public String toString(){
-    return "";
+    String ans="";
+    for(int i=0;i<board.length;i++){
+      for(int j=0;j<board[0].length;j++){
+        if(board[i][j]==-1){
+          ans+="Q";
+        }
+        else{
+          ans+="_";
+        }
+        ans+=" ";
+      }
+      ans+="\n";
+    }
+    return ans;
   }
   private String toStringDebug(){
     String ans="";
