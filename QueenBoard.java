@@ -2,6 +2,7 @@ public class QueenBoard{
   private int[][]board;
   public static void main(String[] args){
     QueenBoard b = new QueenBoard(4);
+    b.addQueen(0,0);
     System.out.println(b.toStringDebug());
   }
   public QueenBoard(int size){
@@ -13,6 +14,11 @@ public class QueenBoard{
     }
   }
   private boolean addQueen(int r, int c){
+    board[r][c]=-1;
+    int s=board.length;
+    for(int i=c+1;i<s;i++){
+      board[r][i]=board[r][i]+1;
+    }
     return false;
   }
   private boolean removeQueen(int r, int c){
