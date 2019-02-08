@@ -3,6 +3,7 @@ public class QueenBoard{
   public static void main(String[] args){
     QueenBoard b = new QueenBoard(4);
     b.addQueen(0,0);
+    b.addQueen(1,0);
     System.out.println(b.toStringDebug());
   }
   public QueenBoard(int size){
@@ -14,10 +15,30 @@ public class QueenBoard{
     }
   }
   private boolean addQueen(int r, int c){
-    board[r][c]=-1;
-    int s=board.length;
-    for(int i=c+1;i<s;i++){
-      board[r][i]=board[r][i]+1;
+    if(board[r][c]==0){
+      board[r][c]=-1;
+      int s=board.length;
+      int i=r+1;
+      int j=c+1;
+
+      while(i<s&&j<s){
+        board[i][j]=board[i][j]+1;
+        i++;
+        j++;
+      }
+
+      i=r-1;
+      j=c+1;
+      while(i>-1&&j<s){
+        board[i][j]=board[i][j]+1;
+        i--;
+        j++;
+      }
+
+      for(int k=c+1;k<s;k++){
+        board[r][k]=board[r][k]+1;
+      }
+      return true;
     }
     return false;
   }
