@@ -1,8 +1,8 @@
 public class QueenBoard{
   private int[][]board;
   public static void main(String[] args){
-    QueenBoard b = new QueenBoard(8);
-    b.solve();
+    QueenBoard b = new QueenBoard(14);
+    System.out.println(b.countSolutions());
     System.out.println(b.toStringDebug());
     System.out.println(b.toString());
   }
@@ -133,6 +133,20 @@ public class QueenBoard{
   *@throws IllegalStateException when the board starts with any non-zero value
   */
   public int countSolutions(){
-    return 0;
+    return countH(0);
+  }
+  //count helper
+  private int countH(int c){
+    int ans=0;
+    if(c==board.length){
+      return 1;
+    }
+    for(int i=0;i<board.length;i++){
+      if(addQueen(i,c)){
+        ans+=countH(c+1);
+        removeQueen(i,c);
+      }
+    }
+    return ans;
   }
 }
