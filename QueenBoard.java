@@ -1,11 +1,8 @@
 public class QueenBoard{
   private int[][]board;
   public static void main(String[] args){
-    QueenBoard b = new QueenBoard(4);
-    b.addQueen(0,0);
-    b.addQueen(1,0);
-    b.removeQueen(0,0);
-    b.removeQueen(1,1);
+    QueenBoard b = new QueenBoard(8);
+    b.solve();
     System.out.println(b.toStringDebug());
     System.out.println(b.toString());
   }
@@ -111,6 +108,21 @@ public class QueenBoard{
         if(board[i][j]!=0){
           throw new IllegalStateException();
         }
+      }
+    }
+    return solveH(0);
+  }
+  //solve helper
+  private boolean solveH(int c){
+    if(c==board.length){
+      return true;
+    }
+    for(int i=0;i<board.length;i++){
+      if(addQueen(i,c)){
+        if(solveH(c+1)){
+          return true;
+        }
+        removeQueen(i,c);
       }
     }
     return false;
